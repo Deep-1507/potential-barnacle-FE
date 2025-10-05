@@ -18,6 +18,8 @@ export const Faculty = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
+
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ export const Faculty = () => {
     const fetchFaculty = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/faculty/faculty-details",
+          `${BACKEND_URL}/api/faculty/faculty-details`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -44,7 +46,7 @@ export const Faculty = () => {
     const fetchPosts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/upload/posts/faculty",
+          `${BACKEND_URL}/api/upload/posts/faculty`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

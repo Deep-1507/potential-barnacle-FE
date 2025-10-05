@@ -16,6 +16,8 @@ export const Years = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     if (token) {
       try {
@@ -33,7 +35,7 @@ export const Years = () => {
     const fetchBranch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/upload/branches/${id}`
+          `${BACKEND_URL}/api/upload/branches/${id}`
         );
         setBranch(res.data);
       } catch (err) {
@@ -48,7 +50,7 @@ export const Years = () => {
     try {
       setLoading(true);
       await axios.post(
-        `http://localhost:3000/api/upload/branches/${id}/subjects`,
+        `${BACKEND_URL}/api/upload/branches/${id}/subjects`,
         {
           yearId: selectedYear,
           subjectName,
@@ -63,7 +65,7 @@ export const Years = () => {
 
       // Refresh branch data after adding subject
       const res = await axios.get(
-        `http://localhost:3000/api/upload/branches/${id}`
+        `${BACKEND_URL}/api/upload/branches/${id}`
       );
       setBranch(res.data);
 

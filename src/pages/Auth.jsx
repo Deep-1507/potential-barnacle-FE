@@ -11,6 +11,8 @@ export const Auth = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,7 +25,7 @@ export const Auth = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3000/api/faculty/signin", formData, {
+      const res = await axios.post(`${BACKEND_URL}/api/faculty/signin`, formData, {
         headers: { "Content-Type": "application/json" },
       });
 

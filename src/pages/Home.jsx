@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 export const Home = () => {
   const [branches, setBranches] = useState([]);
   const navigate = useNavigate();
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/upload/branches");
+        const res = await axios.get(`${BACKEND_URL}/api/upload/branches`);
         setBranches(res.data);
       } catch (err) {
         console.error("Error fetching branches:", err);

@@ -19,6 +19,8 @@ export const Subjects = () => {
 
   const [isFaculty, setIsFaculty] = useState(false);
 
+ const BACKEND_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     if (token) {
       try {
@@ -36,7 +38,7 @@ export const Subjects = () => {
     const fetchContent = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:3000/api/upload/subject-Content",
+          `${BACKEND_URL}/api/upload/subject-Content`,
           { branchId, yearId, subjectId },
           { headers: { "Content-Type": "application/json" } }
         );
@@ -55,7 +57,7 @@ export const Subjects = () => {
       setUploading(true);
 
       await axios.post(
-        `http://localhost:3000/api/upload/branches/${branchId}/upload`,
+        `${BACKEND_URL}api/upload/branches/${branchId}/upload`,
         {
           data: JSON.stringify({
             yearId,
@@ -102,7 +104,7 @@ export const Subjects = () => {
       );
 
       await axios.post(
-        `http://localhost:3000/api/upload/branches/${branchId}/upload`,
+        `${BACKEND_URL}/api/upload/branches/${branchId}/upload`,
         formData,
         {
           headers: {

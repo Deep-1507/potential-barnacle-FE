@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { Menu, X, User, LogOut } from "lucide-react"; // added LogOut
+import { Menu, X, User, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/BIET-Jhansi-Logo.webp"
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   const token = localStorage.getItem("token");
   const [isFaculty, setIsFaculty] = useState(false);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (token) {
       try {
